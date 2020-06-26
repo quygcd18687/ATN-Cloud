@@ -1,0 +1,78 @@
+{% extends 'library.html' %} {% block content %}
+<h1 class="display-3" style="background-color:#000000;color:#FFFF99;">Toys Results</h1>
+<div class="container my-5">
+    <!--Section: Contact v.2-->
+    <section class="mb-4">
+        {% for item in object_list %}
+        <!--Section heading-->
+
+        <!--Section description-->
+        <p class="text-center w-responsive mx-auto mb-5">The Result for Toys Name: <b>{{item.name}}</b></p>
+        <div class="row">
+            <!--Grid column-->
+            <div class="col-md-9 mb-md-0 mb-5">
+                <!--Grid row-->
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <label for="name" class="">Name: <b>{{item.name}}</b></label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <label for="email" class="">Author : <b>{{item.author}}</b></label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <label for="name" class="">Price: <b>{{item.price}}</b></label>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+                <br>
+                <!--Grid row-->
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <label for="name" class="">Email: <b>{{item.email}}</b></label>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <label for="name" class="">Description: <b>{{item.describe}}</b></label>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+                </div>
+
+                <br>
+                <br>
+                <br>
+
+            </div>
+            <!--Grid column-->
+            <div class="col-md-6">
+                <div class="md-form mb-0">
+                    <label for="name" class="">Piture: </label>
+                    <img src="{{item.picture.url}}" alt="">
+                </div>
+            </div>
+
+        </div>
+        {% endfor %}
+        <div class="text-center text-md-left">
+            <a class="btn btn-primary" href="/">Go Home</a>
+        </div>
+        <div class="status"></div>
+    </section>
+    <!--Section: Contact v.2-->
+</div>
+{% endblock %}

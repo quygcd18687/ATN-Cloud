@@ -1,0 +1,53 @@
+<!DOCTYPE html> {% load static %}
+<html>
+
+<head>
+    <title>ATN Toys App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body style="background-color:#4DB6AC;">
+    <nav class="navbar navbar-light" style="background-color:#FF0033;">
+        <a href="/" class="navbar-brand" style="background-color:#FFCC33;color:#000000;border-width:10px;border-color:#FFCC33;border-style:solid;border-spacing:30px;border-radius: 5px;">Library App</a>
+        <a href="{% url 'admin:index' %}" class='navbar-link btn-lg' style="background-color:#FFCC33;color:#000000;">Admin</a>
+        <a href="{% url 'upload-toy' %}" class="navbar-link btn-lg" style="background-color:#FFCC33;color:#000000;">Upload Toys</a>
+    </nav>
+
+    <br> {% block content %}
+    <div class="text-center white-text mx-5 wow fadeIn">
+        <h1 class="mb-4">
+            <strong>ATN STORE</strong>
+        </h1>
+        <h1 class="mb-4">
+            <strong>CHECK YOUR FOR TOYS</strong>
+        </h1>
+
+        <form action="/search" method="get" style="display : flex; justify-content:center ; align-items : center">
+            <input style="width: 50% ; text-align:center ;justify-content:center;vertical-align:middle" name="q" class="form-control" id="anythingSearch" type="text" placeholder="Enter Toys Name for search">
+        </form>
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="card-columns">
+        {% for book in shelf %}
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ book.picture.url }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ book.name }}</h5>
+                <p class="card-text">{{ book.describe }}</p>
+                <div class="card-footer bg-transparent border-dark">
+                    <p class="card-title">{{book.author}}</p>
+                    <p class="card-title">{{book.price}}</p>
+                    <a href="update/{{book.id}}" class="btn btn-warning" id='{{book.id}}'>edit</a>
+                    <a href="delete/{{book.id}}" class="btn btn-danger" id='{{book.id}}'>delete</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock %}
+</body>
+
+</html>
